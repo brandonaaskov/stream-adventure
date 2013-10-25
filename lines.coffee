@@ -14,8 +14,7 @@ caser = (text) ->
 process.stdin
   .pipe(split())
   .pipe(through((line) ->
-    final = caser(line)
-    console.log final
-    this.queue(final)
+    final = caser(line.toString())
+    this.queue(final + '\n')
   ))
   .pipe(process.stdout)
